@@ -3,7 +3,7 @@ pipeline {
     stages{
         stage('Build Maven'){
             steps{
-                checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/manojastro/devops-automation.git']]])
+                checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Java-Techie-jt/devops-automation']]])
                 sh 'mvn clean install'
             }
         }
@@ -17,7 +17,7 @@ pipeline {
         stage('Push image to Hub'){
             steps{
                 script{
-                withCredentials([string(credentialsId: 'docker_hub1', variable: 'docker_hub1')]) {
+                withCredentials([string(credentialsId: 'manojastro', variable: 'docker_hub1')]) {
                 sh 'docker login -u manojastro -p ${docker_hub1}'
 
 }
