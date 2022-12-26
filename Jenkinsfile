@@ -17,7 +17,7 @@ pipeline {
         stage('Push image to Hub'){
             steps{
                 script{
-                withCredentials([string(credentialsId: 'manojastro', variable: 'manojastro')]) {
+                withCredentials([string(credentialsId: 'manojastro')]) {
                 sh 'docker login -u manojastro -p ${docker_hub1}'
 
 }
