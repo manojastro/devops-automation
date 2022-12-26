@@ -14,17 +14,13 @@ pipeline {
                 }
             }
         }
-        stage('Push image to Hub'){
-            steps{
-                script{
-                withCredentials([string(credentialsId: 'manojastro')]) {
-                sh 'docker login -u manojastro -p ${docker_hub1}'
+        stage('Push image') {
+        withDockerRegistry([ credentialsId: "manojastro", url: "" ]) {
+        dockerImage.push()
 
 }
                 }
             }
         }
         
-        }
-    }
-
+ 
